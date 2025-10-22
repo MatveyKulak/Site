@@ -14,6 +14,15 @@
       scroll-behavior: smooth;
     }
 
+    /* Баннер сезона */
+    #banner {
+      text-align:center;
+      background:#fff8dc;
+      padding:10px;
+      border-bottom:2px solid #deb887;
+      font-weight:bold;
+    }
+
     header {
       background: linear-gradient(rgba(245,222,179,0.85), rgba(245,222,179,0.85)),
         url('https://images.unsplash.com/photo-1603048297172-c92544798ef8?auto=format&fit=crop&w=1200&q=60');
@@ -55,6 +64,11 @@
       color: #8b4513;
     }
 
+    .navbar a.active { 
+      color: #d2691e; 
+      text-decoration: underline; 
+    }
+
     section {
       padding: 20px 10px;
       text-align: center;
@@ -88,7 +102,7 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      animation: fadeInUp 0.8s ease;
+      animation: fadeIn 0.8s ease;
     }
 
     .recipe:hover {
@@ -115,6 +129,12 @@
       color: #8b4513;
     }
 
+    .rating {
+      font-size:1.2em; 
+      color:gold; 
+      margin-bottom:10px;
+    }
+
     ul {
       margin: 5px 0 10px 20px;
     }
@@ -139,14 +159,16 @@
       margin-bottom: 8px;
     }
 
+    #randomAdvice {
+      text-align:center; 
+      font-style:italic; 
+      margin-top:10px;
+    }
+
     /* --- Отзывы --- */
     #comments p {
       margin: 8px 0;
       font-style: italic;
-    }
-
-    #commentForm {
-      margin-top: 15px;
     }
 
     #commentForm input, #commentForm textarea {
@@ -191,7 +213,8 @@
     }
 
     .gallery img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
+      border:2px solid #deb887;
     }
 
     /* --- Кнопка вверх --- */
@@ -219,11 +242,6 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -235,6 +253,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Баннер -->
+  <div id="banner">🍁 Осень — время варить борщ и печь пироги! 🍎</div>
 
   <header>
     <h1>Рецепты от бабушки Тани 🍲</h1>
@@ -260,6 +281,7 @@
       <img src="images/Борщ.jpg" alt="Борщ">
       <div class="recipe-content">
         <h2>Классический борщ</h2>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
         <p><strong>Ингредиенты:</strong></p>
         <ul>
           <li>Свекла — 2 шт</li>
@@ -269,6 +291,7 @@
         </ul>
         <p><strong>Приготовление:</strong><br>
           Отвариваем мясо, добавляем овощи, немного томатной пасты и варим до готовности. Подаём со сметаной.</p>
+        <p><em>Рецепт добавлен: 12 октября 2025</em></p>
       </div>
     </div>
 
@@ -276,6 +299,7 @@
       <img src="images/Пирог.jpg" alt="Пирог">
       <div class="recipe-content">
         <h2>Яблочный пирог</h2>
+        <div class="rating">⭐⭐⭐⭐</div>
         <p><strong>Ингредиенты:</strong></p>
         <ul>
           <li>Яблоки — 3 шт</li>
@@ -285,6 +309,25 @@
         </ul>
         <p><strong>Приготовление:</strong><br>
           Взбиваем яйца с сахаром, добавляем муку, выкладываем яблоки и выпекаем при 180°C около 40 минут.</p>
+        <p><em>Рецепт добавлен: 15 октября 2025</em></p>
+      </div>
+    </div>
+
+    <div class="recipe">
+      <img src="images/Оладьи.jpg" alt="Оладьи">
+      <div class="recipe-content">
+        <h2>Оладьи на кефире</h2>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <p><strong>Ингредиенты:</strong></p>
+        <ul>
+          <li>Кефир — 300 мл</li>
+          <li>Мука — 200 г</li>
+          <li>Яйцо — 1 шт</li>
+          <li>Сода — 1 ч. ложка</li>
+        </ul>
+        <p><strong>Приготовление:</strong><br>
+          Смешать все ингредиенты до густого теста и жарить на сковороде с двух сторон до румяной корочки.</p>
+        <p><em>Рецепт добавлен: 20 октября 2025</em></p>
       </div>
     </div>
   </section>
@@ -295,13 +338,17 @@
       <li>Если борщ настоялся ночь — он стал только вкуснее!</li>
       <li>Тесто любит тёплые руки и хорошее настроение.</li>
       <li>Не бойтесь экспериментировать — кухня это творчество!</li>
+      <li>Используйте свежие ингредиенты — это ключ к вкусу.</li>
+      <li>Добавьте немного зелени — она оживляет любое блюдо.</li>
     </ul>
+    <p id="randomAdvice"></p>
   </section>
 
   <section id="comments">
     <h2>Отзывы</h2>
     <p>“Спасибо за рецепт борща, получился идеальный!” — <em>Оля</em></p>
     <p>“Пирог просто тает во рту ❤️” — <em>Катя</em></p>
+    <p>“Оладушки получились пышные, спасибо бабушке Тане!” — <em>Лена</em></p>
 
     <form id="commentForm">
       <input type="text" id="name" placeholder="Ваше имя" required>
@@ -316,7 +363,14 @@
       <img src="images/Суп.jpg" alt="Суп">
       <img src="images/Пельмени.jpg" alt="Пельмени">
       <img src="images/Салат.jpg" alt="Салат">
+      <img src="images/Сырники.jpg" alt="Сырники">
+      <img src="images/Компот.jpg" alt="Компот">
     </div>
+  </section>
+
+  <section id="music" style="text-align:center; margin:20px;">
+    <button onclick="toggleMusic(event)">🎶 Включить музыку</button>
+    <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b7c52d516.mp3?filename=home-sweet-home-20127.mp3" loop></audio>
   </section>
 
   <footer id="contacts">
@@ -338,14 +392,24 @@
       });
     });
 
+    // Случайный совет
+    const advices = [
+      "Не спеши — хорошее тесто любит терпение.",
+      "Немного любви делает любое блюдо вкуснее ❤️",
+      "Секрет пышных оладушек — не мешай тесто слишком долго!",
+      "Не забывай про лавровый лист — он придаёт аромат.",
+      "Лучший ингредиент — хорошее настроение!"
+    ];
+    document.getElementById('randomAdvice').textContent = advices[Math.floor(Math.random()*advices.length)];
+
     // Добавление комментариев
-    document.getElementById('commentForm').addEventListener('submit', function(e) {
+    document.getElementById('commentForm').addEventListener('submit', function(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if (name && message) {
+      const msg = document.getElementById('message').value.trim();
+      if(name && msg){
         const p = document.createElement('p');
-        p.innerHTML = `“${message}” — <em>${name}</em>`;
+        p.innerHTML = `“${msg}” — <em>${name}</em>`;
         document.getElementById('comments').insertBefore(p, this);
         this.reset();
       }
@@ -356,7 +420,30 @@
     window.addEventListener('scroll', () => {
       toTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    toTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Фоновая музыка
+    function toggleMusic(e){
+      const music = document.getElementById('bgMusic');
+      const btn = e.target;
+      if(music.paused){ music.play(); btn.textContent="🔇 Выключить музыку"; }
+      else { music.pause(); btn.textContent="🎶 Включить музыку"; }
+    }
+
+    // Подсветка активного пункта меню
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar a");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(sec => {
+        const top = window.scrollY;
+        if(top >= sec.offsetTop - 200) current = sec.getAttribute("id");
+      });
+      navLinks.forEach(a => {
+        a.classList.remove("active");
+        if(a.getAttribute("href").includes(current)) a.classList.add("active");
+      });
+    });
   </script>
 
 </body>
